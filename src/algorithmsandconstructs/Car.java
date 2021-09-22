@@ -21,7 +21,7 @@ public class Car implements CarInterface{
     private int id;
     private Map<Month, boolean[]> availability;
 
-    public Car(Make make, double dailyRate, int id, Map<Month, boolean[]> availability) {
+    public Car(Make make, double dailyRate, int id) {
         this.make = make;
         this.dailyRate = dailyRate;
         this.id = id;
