@@ -7,6 +7,7 @@ package algorithmsandconstructs;
 
 import algorithmsandconstructs.enums.Make;
 import algorithmsandconstructs.enums.Month;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,10 +15,25 @@ import java.util.Map;
  * @author ruben
  */
 public class Car implements CarInterface{
+    
+    private Make make;
+    private int dailyRate;
+    private int id;
+    //private Month month;
 
+    public Car(Make make, int dailyRate, int id) {
+        this.make = make;
+        this.dailyRate = dailyRate;
+        this.id = id;
+    }
+    
     @Override
     public Map<Month, boolean[]> createAvailability() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<Month, boolean[]> map = new HashMap<Month, boolean[]>();
+        for (Month month : Month.values()) { 
+                map.put(month, new boolean[month.getNumberOfDays()]);
+        }
+        return map;
     }
 
     @Override
