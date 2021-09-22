@@ -17,14 +17,15 @@ import java.util.Map;
 public class Car implements CarInterface{
     
     private Make make;
-    private int dailyRate;
+    private double dailyRate;
     private int id;
-    //private Month month;
+    private Map<Month, boolean[]> availability;
 
-    public Car(Make make, int dailyRate, int id) {
+    public Car(Make make, double dailyRate, int id, Map<Month, boolean[]> availability) {
         this.make = make;
         this.dailyRate = dailyRate;
         this.id = id;
+        this.availability = createAvailability();
     }
     
     @Override
@@ -38,47 +39,52 @@ public class Car implements CarInterface{
 
     @Override
     public Make getMake() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.make;
     }
 
     @Override
     public void setMake(Make make) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.make = make;
     }
 
     @Override
     public double getRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.dailyRate;
     }
 
     @Override
     public void setRate(double rate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.dailyRate = rate;
     }
 
     @Override
     public Map<Month, boolean[]> getAvailability() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.availability;
     }
 
     @Override
     public void setAvailability(Map<Month, boolean[]> availability) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.availability = availability;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }
 
     @Override
     public boolean isAvailable(Month month, int day) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (this.availability.get(month))[day];
     }
 
     @Override
     public boolean book(Month month, int day) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.availability.get(month)[day]==false){
+            this.availability.get(month)[day] = true;
+            return true;
+        } else if (this.availability.get(month)[day] == true){
+            return false;
+        } return false;
     }
     
 }
