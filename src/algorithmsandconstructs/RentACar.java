@@ -49,9 +49,9 @@ public class RentACar implements RentACarInterface{
     public boolean checkAvailability(Month month, int day, Make make, int lengthOfRent) {
         for(CarInterface car : cars){
             int i;
-            boolean isAvailable = true;
+            boolean isAvailable = false;
             for(i=0;i<lengthOfRent;i++){
-                if(!car.isAvailable(month, day + i))
+                if(car.isAvailable(month, day + i))
                     isAvailable = true;
                 else
                     isAvailable = false;
@@ -71,7 +71,7 @@ public class RentACar implements RentACarInterface{
             int i;
             boolean isAvailable = false;
             for(i=0;i<lengthOfRent;i++){
-                if(!car.isAvailable(month, day + i))
+                if(car.isAvailable(month, day + i))
                     isAvailable = true;
                 else
                     isAvailable = false;
@@ -89,9 +89,9 @@ public class RentACar implements RentACarInterface{
     public boolean bookCar(Month month, int day, Make make, int lengthOfRent) {
         for(CarInterface car : cars){
             int i;
-            boolean isAvailable = true;
+            boolean isAvailable = false;
             for(i=0;i<lengthOfRent;i++){
-                if(!car.isAvailable(month, day + i))
+                if(car.isAvailable(month, day + i))
                     isAvailable = true;
                 else
                     isAvailable = false;
