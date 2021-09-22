@@ -35,8 +35,10 @@ public class BookingSystem implements BookingSystemInterface{
             make = info[0];
             dailyRate = info[1];
             numberOfCars = Integer.parseInt(info[2]);
-            Car car = new Car(Make.valueOf(make), parseDouble(dailyRate), id);
-            cars.add(car);
+            for(int i=0; i< numberOfCars; i++){
+                Car car = new Car(Make.valueOf(make), parseDouble(dailyRate), id);
+                cars.add(car);
+            }
             id++;
             line = in.readLine();
         }
